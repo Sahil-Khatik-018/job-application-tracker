@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createJob, updateJob } from "../api/jobApi";
 
-export default function AddJob() {
+export default function AddJob({ editingJob }) {
   const [formData, setFormData] = useState({
     companyName: "",
     role: "",
-    status: "",
+    status: "Applied",
     appliedDate: "",
     followUpDate: "",
     location: "",
@@ -20,10 +21,58 @@ export default function AddJob() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSaveJob = (e) => {
+  const handleSaveJob = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    try {
+
+      const jobData = {
+        ...formData,
+        applicationMode:[formData.applicationMode]
+      }
+      
+      let res;
+
+      if(editingJob) {
+        res = await updateJob(editingJob._id, jobData);
+      } else {
+        res = await createJob(jobData);
+      }
+
+      if(res.success) {
+        alert("Job Added Successfully!")
+
+        setFormData({
+          companyName: "",
+          role: "",
+          status: "Applied",
+          appliedDate: "",
+          followUpDate: "",
+          location: "",
+          applicationMode: [],
+          hrName: "",
+          hrEmail: "",
+          resumeVersion: "",
+          notes: "",
+        })
+      } else {
+        alert(res.message);
+      }
+    } catch(err) {
+      console.error(err);
+      alert("Something went wrong")
+    }
   };
+
+  useEffect(() => {
+    if(editingJob) {
+      setFormData({
+        ...editingJob,
+        applicationMode: editingJob.applicationMode[0] || "",
+        appliedDate: editingJob.appliedDate ? editingJob.appliedDate.split("T")[0] : "",
+        followUpDate: editingJob.followUpDate ? editingJob.followUpDate.split("T")[0] : "",
+      });
+    }
+  }, [editingJob])
 
   return (
     <>

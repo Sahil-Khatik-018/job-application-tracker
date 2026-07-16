@@ -1,11 +1,16 @@
-import AddJob from './pages/AddJob'
+import AddJob from './pages/AddJob';
+import JobList from './pages/JobList';
+import { useState } from 'react';
 import './App.css'
 
 function App() {
 
+  const [editingJob, setEditingJob] = useState(null);
+
   return (
     <>
-      <AddJob />
+      <AddJob editingJob={editingJob}/>
+      <JobList setEditingJob={setEditingJob}/>
     </>
   )
 }
