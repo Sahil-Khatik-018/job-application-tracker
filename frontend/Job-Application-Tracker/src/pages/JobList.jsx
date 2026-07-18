@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllJobs } from "../api/jobApi";
+import { getAllJobs, deleteJob } from "../api/jobApi";
 
 export default function JobList({ setEditingJob }) {
   const [jobs, setJobs] = useState([]);
@@ -22,6 +22,24 @@ export default function JobList({ setEditingJob }) {
     fetchJobs()
   }, []);
 
+  const handleDelete = async (id) => {
+  try {
+    const res = await deleteJob(id);
+
+    if (res.success) {
+      alert("Job Deleted Successfully!");
+
+      setJobs(jobs.filter((job) => job._id !== id));
+
+    } else {
+      alert(res.message);
+    }
+  } catch (err) {
+    console.log(err);
+    alert("Something went wrong");
+  }
+};
+
   return (
     <>
       <h1>All Jobs</h1>
@@ -33,6 +51,9 @@ export default function JobList({ setEditingJob }) {
           <p>{job.status}</p>
           <button onClick={() => setEditingJob(job)}>
             Edit
+          </button> <br />
+          <button onClick={() => handleDelete(job._id)}>
+            Delete
           </button>
           <hr />
         </div>

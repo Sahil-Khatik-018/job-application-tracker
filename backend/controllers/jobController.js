@@ -87,9 +87,9 @@ const updateJob = async (req, res) => {
 // Delete Job
 const deleteJob = async (req, res) => {
   try {
-    const job = await Job.findByIdAndDelete(req.params.id);
+    const deletedJob = await Job.findByIdAndDelete(req.params.id);
 
-    if (!job) {
+    if (!deletedJob) {
       return res.status(404).json({
         success: false,
         message: "Job not found",

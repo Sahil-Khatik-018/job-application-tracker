@@ -118,10 +118,10 @@ export default function AddJob({ editingJob }) {
                 value={formData.status}
                 onChange={handleChange}
               >
-                <option value="applied">Applied</option>
-                <option value="interview">Interview</option>
-                <option value="rejected">Rejected</option>
-                <option value="offer">Offer</option>
+                <option value="Applied">Applied</option>
+                <option value="Interview">Interview</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Offer">Offer</option>
               </select>
             
           </div>

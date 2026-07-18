@@ -24,6 +24,14 @@ export async function updateJob(id, jobData) {
     return await res.json();
 }
 
+export async function deleteJob(id) {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+        method: "DELETE",
+    });
+
+    return await res.json();
+} 
+
 export async function getAllJobs() {
     const response = await fetch(BASE_URL);
     return await response.json()
