@@ -1,65 +1,321 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-  background: #f4f7fb;
+html{
+    scroll-behavior:smooth;
 }
 
-.container {
+:root {
+  --bg: #0f172a;
+  --surface: #111827;
+  --surface-2: #1e293b;
+  --border: #334155;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#0f172a;
+    color:#f8fafc;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 50px;
+  background:#111827;
+  border-bottom:1px solid #1f2937;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: #60a5fa;
+}
+
+.nav-right {
+  color: #cbd5e1;
+  font-size: 15px;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+.main-container{
+  max-width:1600px;
+    margin:30px auto;
+    padding:0 30px;
+    display:grid;
+    grid-template-columns:minmax(350px,400px) 1fr;
+    gap:30px;
+    align-items:start;
+}
+
+.dashboard-section {
+  width: 100%;
+  min-width:0;
+}
+
+.form-section {
+  width:100%;
+}
+
+/* ---------- DASHBOARD ---------- */
+.dashboard h2 {
+  font-size: 1.75rem;
+  margin-bottom: 18px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.stat-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- SEARCH ---------- */
+.search-box {
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-box input::placeholder {
+  color: var(--muted);
+}
+
+.search-box input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* ---------- JOB LIST ---------- */
+.job-list {
   display: flex;
-  gap: 30px;
-  padding: 30px;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.job-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-2px);
+  border-color: #475569;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
   align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
-.left-panel {
-  width: 40%;
+.job-header h3 {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
 }
 
-.right-panel {
-  width: 60%;
+.role {
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
-.job-form {
-  background: white;
-  padding: 25px;
+.status {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+}
+
+.status.Applied {
+  background: var(--primary);
+}
+
+.status.Interview {
+  background: var(--warning);
+}
+
+.status.Offer {
+  background: var(--success);
+}
+
+.status.Rejected {
+  background: var(--danger);
+}
+
+.job-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.job-details div {
+  background: var(--surface-2);
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.job-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.edit-btn,
+.delete-btn,
+.job-form button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.edit-btn:active,
+.delete-btn:active,
+.job-form button:active {
+  transform: translateY(1px);
+}
+
+.edit-btn {
+  flex: 1;
+  background: var(--primary);
+  color: white;
+}
+
+.edit-btn:hover {
+  background: var(--primary-hover);
+}
+
+.delete-btn {
+  flex: 1;
+  background: var(--danger);
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+
+/* ---------- FORM ---------- */
+.job-form {
+  background:#1e293b;
+  border-radius:18px;
+  padding:25px;
+  box-shadow:
+  0 10px 25px rgba(0,0,0,.35);
 }
 
 .job-form h1 {
-  margin-bottom: 25px;
+  font-size: 28px;
+  margin-bottom: 20px;
 }
 
 .form-row {
-  display: flex;
-  gap: 15px;
+  display:flex;
+  gap:15px;
 }
 
 .form-group {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  flex:1;
+  display:flex;
+  flex-direction:column;
 }
 
 label {
-  margin-top: 15px;
-  margin-bottom: 5px;
-  font-weight: 600;
+  display:block;
+  margin-top:12px;
+  margin-bottom:6px;
+  color:#e2e8f0;
+  font-size:14px;
+  font-weight:500;
 }
 
 input,
 select,
 textarea {
-  width: 100%;
-  padding: 11px;
-  border-radius: 8px;
-  border: 1px solid #dcdcdc;
-  font-size: 15px;
+  width:100%;
+
+    background:#334155;
+
+    color:white;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:10px;
+
+    padding:11px 14px;
+
+    font-size:15px;
+
+    transition:.25s;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline:2px solid #3b82f6;
 }
 
 textarea {
@@ -67,113 +323,98 @@ textarea {
 }
 
 .job-form button {
-  width: 100%;
-  margin-top: 20px;
-  padding: 12px;
-  border: none;
-  background: #2563eb;
-  color: white;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
+width:100%;
+
+    margin-top:25px;
+
+    border:none;
+
+    padding:14px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:16px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.25s;
 }
 
 .job-form button:hover {
-  background: #1d4ed8;
+  background:#1d4ed8;
+
+    transform:translateY(-2px);
 }
 
-.right-panel h1 {
-  margin-bottom: 20px;
+/* ---------- FOOTER ---------- */
+.footer {
+   margin-top:40px;
+
+    text-align:center;
+
+    padding:20px;
+
+    color:#94a3b8;
+
+    border-top:1px solid #1f2937;
 }
 
-.job-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 18px;
-  box-shadow: 0 8px 18px rgba(0,0,0,.08);
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1200px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
+
+  .form-section {
+    position: static;
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.job-card h3 {
-  color: #2563eb;
-  margin-bottom: 10px;
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .job-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .job-details {
+    grid-template-columns: 1fr;
+  }
+
+  .job-actions {
+    flex-direction: column;
+  }
 }
 
-.job-card p {
-  margin: 8px 0;
-}
+@media (max-width: 480px) {
+  .main-container,
+  .navbar,
+  .footer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 
-.status {
-  display: inline-block;
-  padding: 6px 14px;
-  border-radius: 30px;
-  color: white;
-  font-size: 13px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.status.applied {
-  background: #3b82f6;
-}
-
-.status.interview {
-  background: #f59e0b;
-}
-
-.status.offer {
-  background: #22c55e;
-}
-
-.status.rejected {
-  background: #ef4444;
-}
-
-.btn-group {
-  display: flex;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.edit-btn,
-.delete-btn {
-  flex: 1;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-}
-
-.edit-btn {
-  background: #2563eb;
-}
-
-.delete-btn {
-  background: #ef4444;
-}
-
-.edit-btn:hover {
-  background: #1d4ed8;
-}
-
-.delete-btn:hover {
-  background: #dc2626;
-}
-
-@media (max-width:900px){
-
-.container{
-    flex-direction:column;
-}
-
-.left-panel,
-.right-panel{
-    width:100%;
-}
-
-.form-row{
-    flex-direction:column;
-}
-
+  .stats {
+    grid-template-columns: 1fr;
+  }
 }

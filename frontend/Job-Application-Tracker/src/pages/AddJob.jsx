@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { createJob, updateJob } from "../api/jobApi";
+import toast from "react-hot-toast";
 
 export default function AddJob({ editingJob }) {
   const [formData, setFormData] = useState({
@@ -39,7 +40,7 @@ export default function AddJob({ editingJob }) {
       }
 
       if(res.success) {
-        alert("Job Added Successfully!")
+        toast.success("Job Added Successfully!")
 
         setFormData({
           companyName: "",
@@ -55,11 +56,11 @@ export default function AddJob({ editingJob }) {
           notes: "",
         })
       } else {
-        alert(res.message);
+        toast.error(res.message);
       }
     } catch(err) {
       console.error(err);
-      alert("Something went wrong")
+      toast.error("Something went wrong")
     }
   };
 

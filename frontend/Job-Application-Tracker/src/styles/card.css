@@ -1,0 +1,156 @@
+.job-list{
+
+    display:grid;
+
+    gap:20px;
+
+}
+
+.job-card{
+    background:#1f2937;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    transition:.3s;
+
+    border:1px solid transparent;
+    box-shadow: 0 15px 30px rgba(0,0,0,.4);
+}
+
+.job-card:hover{
+
+    border-color:#3b82f6;
+
+    transform:translateY(-3px);
+
+}
+
+.job-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:18px;
+
+}
+
+.job-header h3{
+
+    font-size:24px;
+
+}
+
+.role{
+
+    color:#cbd5e1;
+
+    margin-top:4px;
+
+}
+
+.status{
+
+    padding:8px 18px;
+
+border-radius:25px;
+
+font-size:13px;
+
+    font-weight:600;
+
+}
+
+.status.applied{
+
+    background:#2563eb;
+
+}
+
+.status.interview{
+
+    background:#f59e0b;
+
+}
+
+.status.offer{
+
+    background:#16a34a;
+
+}
+
+.status.rejected{
+
+    background:#dc2626;
+
+}
+
+.job-details{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+}
+
+.job-details div{
+
+    background:#334155;
+
+    border-radius:10px;
+
+    padding:12px;
+
+}
+
+.job-actions{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.edit-btn,
+.delete-btn{
+
+    flex:1;
+
+    border:none;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:600;
+transition:.25s;
+
+&:hover {
+    transform:translateY(-2px);
+}
+}
+
+.edit-btn{
+
+    background:#2563eb;
+
+}
+
+
+.delete-btn{
+
+    background:#ef4444;
+
+}

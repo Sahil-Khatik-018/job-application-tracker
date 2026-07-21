@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllJobs, deleteJob } from "../api/jobApi";
+import toast from 'react-hot-toast'
 
 export default function JobList({ setEditingJob }) {
   const [jobs, setJobs] = useState([]);
@@ -27,16 +28,16 @@ export default function JobList({ setEditingJob }) {
     const res = await deleteJob(id);
 
     if (res.success) {
-      alert("Job Deleted Successfully!");
+      toast.success("Job Deleted Successfully!");
 
       setJobs(jobs.filter((job) => job._id !== id));
 
     } else {
-      alert(res.message);
+      toast.error(res.message);
     }
   } catch (err) {
     console.log(err);
-    alert("Something went wrong");
+    toast.error("Something went wrong");
   }
 };
 

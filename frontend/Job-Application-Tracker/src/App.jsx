@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import './App.css'
+import "./styles/layout.css";
+import "./styles/form.css";
+import "./styles/dashboard.css";
+import "./styles/card.css";
+import "./styles/responsive.css";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -8,20 +12,26 @@ import AddJob from './pages/AddJob';
 
 function App() {
   const [editingJob, setEditingJob] = useState(null);
+  const [deleteJobId, setDeleteJobId] = useState(null);
 
   return (
     <>
       <Navbar />
 
-      <main className="main-container">
-        <div className="dashboard-section">
-          <Dashboard setEditingJob={setEditingJob} />
-        </div>
-
+      <div className="main-container">
         <div className="form-section">
-          <AddJob editingJob={editingJob} />
-        </div>
-      </main>
+        <AddJob
+            editingJob={editingJob}
+        />
+    </div>
+
+    <div className="dashboard-section">
+        <Dashboard
+            setEditingJob={setEditingJob}
+            setDeleteJobId={setDeleteJobId}
+        />
+    </div>
+      </div>
 
       <Footer />
     </>

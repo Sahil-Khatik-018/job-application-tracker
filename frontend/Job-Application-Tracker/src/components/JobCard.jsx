@@ -1,6 +1,7 @@
 import { deleteJob } from "../api/jobApi"
+import toast from "react-hot-toast";
 
-export default function JobCard({ job, setJobs, setEditingJob }) {
+export default function JobCard({ job, setJobs, setEditingJob, setDeleteJobId }) {
 
     async function handleDelete(id) {
         const confirmDelete = window.confirm("Are you sure you want to delete this job?");
@@ -11,7 +12,7 @@ export default function JobCard({ job, setJobs, setEditingJob }) {
             const res = await deleteJob(id);
 
             if(res.status) {
-                alert("Deleted Successfully!");
+                toast.success("Deleted Successfully!");
 
                 setJobs((prev) => 
                     prev.filter((job) => job._id !== id)
@@ -90,7 +91,7 @@ export default function JobCard({ job, setJobs, setEditingJob }) {
 
           className="delete-btn"
 
-          onClick={()=>handleDelete(job._id)}
+          onClick={()=>setDeleteJobId(job._id)}
 
         >
           Delete

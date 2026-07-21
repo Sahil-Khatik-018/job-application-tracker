@@ -5,7 +5,7 @@ import Stats from "../components/Stats";
 import SearchBar from "../components/SearchBar";
 import JobCard from "../components/JobCard";
 
-export default function Dashboard({ setEditingJob }) {
+export default function Dashboard({ setEditingJob, setDeleteJobId }) {
   const [jobs, setJobs] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -31,7 +31,9 @@ export default function Dashboard({ setEditingJob }) {
 
   return (
     <div className="dashboard">
-      <h2>Dashboard</h2>
+      <h2>Job Tracker Admin</h2>
+
+      <h3>Manage and monitor all your job applications.</h3> <br />
 
       <Stats jobs={jobs} />
 
@@ -44,6 +46,7 @@ export default function Dashboard({ setEditingJob }) {
             job={job}
             setJobs={setJobs}
             setEditingJob={setEditingJob}
+            setDeleteJobId={setDeleteJobId}
           />
         ))}
       </div>
