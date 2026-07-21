@@ -45,17 +45,29 @@ export default function JobList({ setEditingJob }) {
       <h1>All Jobs</h1>
 
       {jobs.map((job) => (
-        <div key={job._id}>
+        <div className="job-card" key={job._id}>
           <h3>{job.companyName}</h3>
-          <p>{job.role}</p>
-          <p>{job.status}</p>
-          <button onClick={() => setEditingJob(job)}>
-            Edit
-          </button> <br />
-          <button onClick={() => handleDelete(job._id)}>
-            Delete
-          </button>
-          <hr />
+          <p><strong>Role:</strong> {job.role}</p>
+
+          <span className={`status ${job.status.toLowerCase()}`}>
+            {job.status}
+          </span>
+          
+          <div className="btn-group">
+            <button
+              className="edit-btn"
+              onClick={() => setEditingJob(job)}
+            >
+              Edit
+            </button>
+
+            <button
+              className="delete-btn"
+              onClick={() => handleDelete(job._id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       ))}
     </>
