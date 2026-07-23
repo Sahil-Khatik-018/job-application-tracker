@@ -1,4 +1,6 @@
-export default function ConfirmDelete() {
+import '../App.css'
+
+export default function ConfirmDelete( { onConfirm, onCancel } ) {
 
     return (
         <div className="modal-overlay">
@@ -11,17 +13,23 @@ export default function ConfirmDelete() {
                     This action cannot be undone.
                 </p>
 
-                <div>
+                <div className="modal-buttons">
 
-                    <button>
-                        Cancel
-                    </button>
+    <button
+        className="cancel-btn"
+        onClick={onCancel}
+    >
+        Cancel
+    </button>
 
-                    <button>
-                        Delete
-                    </button>
+    <button
+        className="delete-btn"
+        onClick={onConfirm}
+    >
+        Delete
+    </button>
 
-                </div>
+</div>
 
             </div>
 

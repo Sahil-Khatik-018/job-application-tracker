@@ -418,3 +418,134 @@ width:100%;
     grid-template-columns: 1fr;
   }
 }
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    color: #cbd5e1;
+}
+
+.loader {
+    width: 45px;
+    height: 45px;
+    border: 5px solid #334155;
+    border-top: 5px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===========================
+   Confirm Delete Modal
+=========================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  width: 400px;
+  max-width: 90%;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,.35);
+}
+
+.modal h2 {
+  color: #f8fafc;
+  margin-bottom: 12px;
+}
+
+.modal p {
+  color: #94a3b8;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.cancel-btn,
+.delete-btn {
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: .25s ease;
+}
+
+.cancel-btn {
+  background: #334155;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: #475569;
+}
+
+.delete-btn {
+  background: #dc2626;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   Empty State
+========================= */
+
+.empty-state {
+  background: #1e293b;
+  border: 2px dashed #475569;
+  border-radius: 14px;
+  padding: 60px 30px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.empty-state h2 {
+  color: #f8fafc;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.empty-state p {
+  color: #94a3b8;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.empty-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+}

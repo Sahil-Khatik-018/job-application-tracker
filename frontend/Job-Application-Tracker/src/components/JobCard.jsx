@@ -19,7 +19,6 @@ export default function JobCard({ job, setJobs, setEditingJob, setDeleteJobId })
                 );
             }
         } catch(err) {
-            console.log(err);
         }
     }
 

@@ -59,7 +59,6 @@ export default function AddJob({ editingJob }) {
         toast.error(res.message);
       }
     } catch(err) {
-      console.error(err);
       toast.error("Something went wrong")
     }
   };
