@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/api/jobs"
+const BASE_URL = "https://job-tracker-backend-b873.onrender.com/api/jobs";
 
 export async function createJob(jobData) {
     const response = await fetch(BASE_URL, {

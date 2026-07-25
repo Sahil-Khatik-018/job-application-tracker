@@ -15,22 +15,24 @@ export default function Dashboard({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchJobs() {
-      try {
-        setLoading(true);
+  async function fetchJobs() {
+    try {
+      setLoading(true);
 
-        const res = await getAllJobs();
+      const res = await getAllJobs();
 
-        if (res.success) {
-          setJobs(res.data);
-        }
-      } catch (err) {
-        setLoading(false);
+      if (res.success) {
+        setJobs(res.data);
       }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
+  }
 
-    fetchJobs();
-  }, []);
+  fetchJobs();
+}, []);
 
   const filteredJobs = useMemo(() => {
     return jobs.filter((job) => {
