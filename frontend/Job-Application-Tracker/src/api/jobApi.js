@@ -1,4 +1,4 @@
-const BASE_URL = "https://job-tracker-backend-b873.onrender.com/api/jobs";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export async function createJob(jobData) {
     const response = await fetch(BASE_URL, {
